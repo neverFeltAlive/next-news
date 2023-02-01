@@ -1,0 +1,10 @@
+{
+  "name": "dzin news",
+  "short_name": "dzin",
+  "theme_color": "#83bcff",
+  "background_color": "#e1eff6",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/"
+}

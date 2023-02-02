@@ -5,8 +5,10 @@ export {
   Countries as NewsAPICountries,
 } from '@/shared/NewsAPI/api/enums';
 export type {
-  AllParams as NewsAPIAllParams,
-  HeadlineParams as NewsAPIHeadlineParams,
-  UrlParams as NewsAPIUrlParams,
+  IAllParams as INewsAPIAllParams,
+  IHeadlineParams as INewsAPIHeadlineParams,
+  IUrlParams as INewsAPIUrlParams,
+  INewsArticle as INewsAPIArticle,
+  IResponse as INewsAPIResponse,
 } from '@/shared/NewsAPI/api/types';
 export { getRequest as getNewsAPIRequest } from '@/shared/NewsAPI/api/getRequest';

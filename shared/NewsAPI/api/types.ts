@@ -1,17 +1,17 @@
 import { Countries, SearchIn, SortOptions } from './enums';
 
-//region Types
+//region Interfaces
 /**
  * Type for general get parameters
  * @param q - search query
  * @param pageSize - number of articles per page
  * @param page - current page index
  */
-export type UrlParams = {
+export interface IUrlParams {
   q?: string;
   pageSize?: number;
   page?: number;
-};
+}
 
 /**
  * Type for get parameters for headlines endpoint
@@ -20,9 +20,9 @@ export type UrlParams = {
  * @param page - current page index
  * @param country - news for which country to search through
  */
-export type HeadlineParams = UrlParams & {
+export interface IHeadlineParams extends IUrlParams {
   country?: Countries;
-};
+}
 
 /**
  * Type for get parameters for everything endpoint
@@ -34,10 +34,30 @@ export type HeadlineParams = UrlParams & {
  * @param fromDate - oldest article release date
  * @param toDate - latest article release date
  */
-export type AllParams = UrlParams & {
+export interface IAllParams extends IUrlParams {
   sortBy?: SortOptions;
   searchIn?: SearchIn[];
   fromDate?: Date;
   toDate?: Date;
-};
+}
+
+export interface INewsArticle {
+  author: string | null;
+  content: string | null;
+  description: string | null;
+  publishedAt: string | null;
+  source: {
+    id: null | number;
+    name: string | null;
+  } | null;
+  title: string;
+  url: string;
+  urlToImage: string | null;
+}
+
+export interface IResponse {
+  articles: INewsArticle[] | [];
+  status: string;
+  totalResults: number;
+}
 //endregion

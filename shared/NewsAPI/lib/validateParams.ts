@@ -1,9 +1,9 @@
-import { AllParams, HeadlineParams } from '@/shared/NewsAPI/api/types';
+import { IAllParams, IHeadlineParams } from '@/shared/NewsAPI/api/types';
 
 /**
  * Validates and casts get parameters for News API request
  */
-export const validateParams = (params: HeadlineParams & AllParams) => {
+export const validateParams = (params: IHeadlineParams & IAllParams) => {
   const { pageSize, searchIn, fromDate, toDate, ...otherParams } = params;
   const newParams: { [key: string]: string } = {};
 

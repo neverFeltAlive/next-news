@@ -1,25 +1,18 @@
 import Head from 'next/head';
-import { useEffect } from 'react';
 import {
   getNewsAPIRequest,
+  INewsAPIResponse,
   NewsAPICountries,
   NewsAPIEndpoints,
-  NewsAPIHeadlineParams,
 } from '@/shared/NewsAPI';
+import { NewsList } from '@/entities/News';
+import { useEffect, useState } from 'react';
+import { AxiosResponse } from 'axios';
 
 // TODO: declaration files TS
 
 export default function Home() {
-  useEffect(() => {
-    (async () => {
-      const request = getNewsAPIRequest<NewsAPIHeadlineParams>(
-        NewsAPIEndpoints.Headlines,
-        { q: 'Владимир', country: NewsAPICountries.Russia }
-      );
-      const result = await request();
-      console.log(result);
-    })();
-  }, []);
+  const queryParams = { q: '', country: NewsAPICountries.Russia };
 
   return (
     <>
@@ -29,7 +22,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main></main>
+      <main>
+        <NewsList
+          endpoint={NewsAPIEndpoints.Headlines}
+          queryParams={queryParams}
+        />
+      </main>
     </>
   );
 }

@@ -8,6 +8,9 @@ module.exports = withPWA({
     appDir: true,
     reactMode: 'concurrent',
   },
+  compiler: {
+    styledComponents: true,
+  },
   env: {
     NEWS_API_KEY: process.env.NEWS_API_KEY,
   },

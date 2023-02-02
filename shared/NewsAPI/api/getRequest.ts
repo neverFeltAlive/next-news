@@ -4,7 +4,9 @@ import { validateParams } from '@/shared/NewsAPI/lib/validateParams';
 import { AllParams, HeadlineParams } from '@/shared/NewsAPI/api/types';
 
 const API_KEY = process.env.NEWS_API_KEY;
-axios.defaults.baseURL = 'https://newsapi.org/v2';
+const BASE_URL = 'https://newsapi.org/v2';
+
+axios.defaults.baseURL = BASE_URL;
 
 /**
  * Generates axios get request to News API

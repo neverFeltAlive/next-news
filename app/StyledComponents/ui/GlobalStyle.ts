@@ -22,8 +22,9 @@ export const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
     font-family: ${lato.style.fontFamily};
     font-size: 20px;
     font-weight: 400;
+    color: ${(props) => props.theme.mainColor};
     
-    background-color: ${(props) => props.theme.lightColor}
+    background-color: ${(props) => props.theme.shadowColor}
   }
 
   main {

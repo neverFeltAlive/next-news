@@ -20,7 +20,7 @@ export const ArticleSlide = styled.div<{
 
 export const Article = styled.article`
   background-color: ${(props) => props.theme.lightColor};
-  border: 2px solid ${(props) => props.theme.shadowColor};
+  border: 2px solid transparent;
   border-radius: ${(props) => props.theme.borderRadius};
   cursor: pointer;
   padding: 15px;
@@ -29,7 +29,7 @@ export const Article = styled.article`
   height: 500px;
 
   &:hover {
-    background-color: ${(props) => props.theme.shadowColor};
+    border: 2px solid ${(props) => props.theme.mainColor};
   }
 `;
 

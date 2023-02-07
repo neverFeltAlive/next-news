@@ -1,19 +1,18 @@
 import Head from 'next/head';
-import {
-  getNewsAPIRequest,
-  INewsAPIResponse,
-  NewsAPICountries,
-  NewsAPIEndpoints,
-} from '@/shared/NewsAPI';
-import { NewsList } from '@/entities/News';
-import { useEffect, useState } from 'react';
-import { AxiosResponse } from 'axios';
+
+import { News } from '@/widgets/News';
+import { QueryParamsProvider } from '@/entities/QueryParams';
 
 // TODO: declaration files TS
+// TODO: NewsDate & NewsSelect - HOC
+// TODO: Select & Date - Stupid components for ui only
+// TODO: integrate geolocation API
+// TODO: pwa
+// TODO: revisit architecture
+// TODO: ssr
+// TODO: test
 
 export default function Home() {
-  const queryParams = { q: '', country: NewsAPICountries.Russia };
-
   return (
     <>
       <Head>
@@ -23,10 +22,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <NewsList
-          endpoint={NewsAPIEndpoints.Headlines}
-          queryParams={queryParams}
-        />
+        <QueryParamsProvider>
+          <News />
+        </QueryParamsProvider>
       </main>
     </>
   );

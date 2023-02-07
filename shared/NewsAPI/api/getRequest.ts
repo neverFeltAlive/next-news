@@ -22,7 +22,7 @@ export const getRequest = <T extends Endpoints>(
   params?: T extends Endpoints.All ? IAllParams : IHeadlineParams
 ) => {
   return async () =>
-    axios.get<IResponse>(endpoint, {
+    await axios.get<IResponse>(endpoint, {
       params: {
         ...validateParams(params || {}),
         apiKey: API_KEY,

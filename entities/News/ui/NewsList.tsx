@@ -1,43 +1,54 @@
 import { ReactElement, useState } from 'react';
 
-import { Navigation, Pagination } from 'swiper';
 import { SwiperSlide } from 'swiper/react';
+import { Swiper } from 'swiper/types';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-import { IProps } from '@/entities/News/model/types';
-import { NewsAPIEndpoints } from '@/shared/NewsAPI';
-import { useNews } from '@/entities/News';
-import NewsItem from '@/entities/News/ui/NewsItem';
+import { INewsAPIArticle, NewsAPIEndpoints } from '@/shared/NewsAPI';
+import { NewsItem } from '@/entities/News/ui/NewsItem';
 import {
   ArticleSection,
   ArticleSlide,
   ArticleSwiper,
 } from '@/entities/News/ui/UIKit';
 
+interface IProps {
+  articles?: INewsAPIArticle[];
+  totalCount?: number;
+}
+
 export const NewsList = <T extends NewsAPIEndpoints>({
-  endpoint,
-  queryParams,
-}: IProps<T>): ReactElement => {
-  const { articles, totalResults } = useNews<T>({ endpoint, queryParams });
-  const [activeSlideIndex, setActiveSlideIndex] = useState(1);
+  articles,
+  totalCount,
+}: IProps): ReactElement => {
+  const [swiper, setSwiper] = useState<Swiper | null>(null);
+  const [swiperActiveIndex, setSwiperActiveIndex] = useState(1);
+
+  const handleArticleClick = (index: number) => {
+    if (swiperActiveIndex !== index && !!swiper) {
+      setSwiperActiveIndex(index);
+      swiper?.slideTo(index - 1);
+    }
+  };
 
   return (
     <ArticleSection>
       <ArticleSwiper
-        modules={[Navigation, Pagination]}
         spaceBetween={50}
         slidesPerView={3}
-        navigation
-        pagination={{ clickable: true }}
-        onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex + 1)}
+        onSwiper={(swiper) => setSwiper(swiper)}
+        onSlideChange={(swiper) => setSwiperActiveIndex(swiper.activeIndex + 1)}
       >
         {!!articles?.length &&
           articles.map((article, index) => (
-            <SwiperSlide key={`article_${article.title}`}>
-              <ArticleSlide isActive={activeSlideIndex === index}>
+            <SwiperSlide
+              key={`article_${article.title}`}
+              onClick={() => handleArticleClick(index)}
+            >
+              <ArticleSlide isActive={swiperActiveIndex === index}>
                 <NewsItem {...article} />
               </ArticleSlide>
             </SwiperSlide>

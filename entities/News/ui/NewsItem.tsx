@@ -1,6 +1,8 @@
 import { FC } from 'react';
+
 import { INewsAPIArticle } from '@/shared/NewsAPI';
 import { Article } from '@/entities/News/ui/UIKit';
+
 export const NewsItem: FC<INewsAPIArticle> = ({
   author,
   description,

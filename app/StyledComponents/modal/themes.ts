@@ -9,7 +9,7 @@ const theme = {
 const light = {
   mainColor: '#331E36',
   lightColor: '#e1eff6',
-  shadowColor: '#83bcff',
+  shadowColor: '#cee6ff',
   accentColor: '#EF959C',
   secondAccentColor: '#41337A',
 };

@@ -8,7 +8,7 @@ import { Countries, SearchIn, SortOptions } from './enums';
  * @param page - current page index
  */
 export interface IUrlParams {
-  q?: string;
+  q: string;
   pageSize?: number;
   page?: number;
 }

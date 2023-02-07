@@ -3,16 +3,17 @@ const withPWA = require('next-pwa')({
 });
 
 module.exports = withPWA({
-  reactStrictMode: true,
+  reactStrictMode: process.env.NODE_ENV === 'development',
   experimental: {
     appDir: true,
-    reactMode: 'concurrent',
   },
   compiler: {
     styledComponents: true,
   },
   env: {
     NEWS_API_KEY: process.env.NEWS_API_KEY,
+    DADATA_API_KEY: process.env.DADATA_API_KEY,
+    DADATA_API_SECRET: process.env.DADATA_API_SECRET,
   },
   pwa: {
     dest: 'public',

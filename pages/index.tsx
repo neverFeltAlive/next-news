@@ -4,11 +4,8 @@ import { News } from '@/widgets/News';
 import { QueryParamsProvider } from '@/entities/QueryParams';
 
 // TODO: declaration files TS
-// TODO: NewsDate & NewsSelect - HOC
-// TODO: Select & Date - Stupid components for ui only
 // TODO: integrate geolocation API
 // TODO: pwa
-// TODO: revisit architecture
 // TODO: ssr
 // TODO: test
 

@@ -1,5 +1,7 @@
 import React, { FC, ReactNode, useState } from 'react';
+
 import { ThemeProvider } from 'styled-components';
+
 import { darkTheme, lightTheme } from '@/app/StyledComponents/modal/themes';
 import { GlobalStyle } from '@/app/StyledComponents/ui/GlobalStyle';
 

@@ -20,7 +20,7 @@ export const Initializer: FC<Props> = ({ children }) => {
     <QueryClientProvider client={queryClient}>
       <>
         {children}
-        <ReactQueryDevtools initialIsOpen={false} position="top-right" />
+        <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
       </>
     </QueryClientProvider>
   );

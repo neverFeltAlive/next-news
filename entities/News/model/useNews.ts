@@ -1,8 +1,21 @@
 import { useQuery } from 'react-query';
-import { getNewsAPIRequest, NewsAPIEndpoints } from '@/shared/NewsAPI';
-import { IProps } from '@/entities/News/model/types';
+import {
+  getNewsAPIRequest,
+  INewsAPIAllParams,
+  INewsAPIHeadlineParams,
+  INewsAPIResponse,
+  NewsAPIEndpoints,
+} from '@/shared/NewsAPI';
 import { AxiosResponse } from 'axios';
-import { IResponse } from '@/shared/NewsAPI/api/types';
+
+export interface IProps<T extends NewsAPIEndpoints> {
+  endpoint: T extends NewsAPIEndpoints.All
+    ? NewsAPIEndpoints.All
+    : NewsAPIEndpoints.Headlines;
+  queryParams: T extends NewsAPIEndpoints.All
+    ? INewsAPIAllParams
+    : INewsAPIHeadlineParams;
+}
 
 export const useNews = <T extends NewsAPIEndpoints>({
   endpoint,
@@ -22,7 +35,7 @@ export const useNews = <T extends NewsAPIEndpoints>({
  * @param request - request to be delayed
  */
 const requestWrapper = async (
-  request: () => Promise<AxiosResponse<IResponse, any>>
+  request: () => Promise<AxiosResponse<INewsAPIResponse, any>>
 ) => {
   const response = await request();
   await new Promise((r) => setTimeout(r, 2000));

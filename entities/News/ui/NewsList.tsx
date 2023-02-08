@@ -57,5 +57,4 @@ export const NewsList = <T extends NewsAPIEndpoints>({
     </ArticleSection>
   );
 };
-
 export default NewsList;

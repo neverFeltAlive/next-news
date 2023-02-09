@@ -1,6 +1,6 @@
 import { Lato } from '@next/font/google';
 import { createGlobalStyle } from 'styled-components';
-import { ITheme } from '@/app/StyledComponents/modal/types';
+import { ITheme } from '@/app/StyledComponents/modal/ThemeWrapper.types';
 
 //region Fonts
 const lato = Lato({

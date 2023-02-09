@@ -1,7 +1,9 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+
+import { IProps } from '@/app/ReactQuery/modal/Initializer.types';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -11,11 +13,7 @@ const queryClient = new QueryClient({
   },
 });
 
-type Props = {
-  children: ReactNode;
-};
-
-export const Initializer: FC<Props> = ({ children }) => {
+export const Initializer: FC<IProps> = ({ children }) => {
   return (
     <QueryClientProvider client={queryClient}>
       <>

@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, FormEventHandler, useState } from 'react';
 
 import { UISearch } from '@/shared/UIKit';
+
 import { useQueryParams } from '@/entities/QueryParams';
 
 export const NewsSearch = () => {

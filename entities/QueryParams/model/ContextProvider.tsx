@@ -1,14 +1,11 @@
 import { createContext, FC, ReactNode, useState } from 'react';
+
 import { INewsAPIAllParams, INewsAPIHeadlineParams } from '@/shared/NewsAPI';
 
-interface IProps {
-  children: ReactNode;
-}
-
-interface IContext {
-  params: INewsAPIAllParams | INewsAPIHeadlineParams;
-  setParams: (params: INewsAPIAllParams | INewsAPIHeadlineParams) => void;
-}
+import {
+  IContext,
+  IProps,
+} from '@/entities/QueryParams/model/ContextProvider.types';
 
 const initialParams = {
   q: '',

@@ -8,6 +8,13 @@ import { QueryParamsProvider } from '@/entities/QueryParams';
 // TODO: pwa
 // TODO: ssr
 // TODO: test
+// TODO: close select on outside click
+// TODO: loader
+// TODO: animation (https://www.framer.com/motion/)
+// TODO: lazy load news pages
+// TODO: fallback for loading images
+// TODO: fallback for errored images
+// TODO: check sorting query
 
 export default function Home() {
   return (

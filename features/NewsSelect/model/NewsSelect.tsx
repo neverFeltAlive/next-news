@@ -1,14 +1,12 @@
-import { useQueryParams } from '@/entities/QueryParams';
 import { NewsAPICountries, NewsAPISortOptions } from '@/shared/NewsAPI';
 import { setOptionValueType, UIOption, UISelect } from '@/shared/UIKit';
 
-interface IProps<T extends 'country' | 'sortBy'> {
-  options: OptionsType<T>;
-}
+import { useQueryParams } from '@/entities/QueryParams';
 
-type OptionsType<T extends 'country' | 'sortBy'> = T extends 'country'
-  ? { [key in keyof typeof NewsAPICountries]: string }
-  : { [key in keyof typeof NewsAPISortOptions]: string };
+import {
+  IProps,
+  OptionsType,
+} from '@/features/NewsSelect/model/NewsSelect.types';
 
 export const NewsSelect = <T extends 'country' | 'sortBy'>({
   options,
@@ -30,6 +28,7 @@ export const NewsSelect = <T extends 'country' | 'sortBy'>({
 
   return (
     <UISelect
+      defaultValue={paramName === 'country' ? 'Country' : 'Sort'}
       selected={
         Object.keys(options).find(
           (key) => options[key as keyof OptionsType<T>] === getValue()

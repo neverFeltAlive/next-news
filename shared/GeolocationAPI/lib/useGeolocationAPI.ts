@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 
 import { useQuery } from 'react-query';
-
-import { GeolocationStatus } from '@/shared/GeolocationAPI/lib/types';
-import { getReverseGeocodeRequest } from '@/shared/GeolocationAPI/api/getRequests';
 import { AxiosResponse } from 'axios';
+
+import {
+  GeolocationStatus,
+  ILocations,
+} from '@/shared/GeolocationAPI/lib/types';
+import { getReverseGeocodeRequest } from '@/shared/GeolocationAPI/api/getRequests';
 
 interface ICoords {
   latitude: number;
@@ -12,11 +15,13 @@ interface ICoords {
 }
 
 export const useGeolocationAPI = () => {
-  const [status, setStatus] = useState(GeolocationStatus.InProgress);
-  const [coords, setCoords] = useState<ICoords | null>(null);
-  const [request, setRequest] = useState<(() => Promise<AxiosResponse>) | null>(
-    null
+  const [status, setStatus] = useState<GeolocationStatus>(
+    GeolocationStatus.InProgress
   );
+  const [coords, setCoords] = useState<ICoords | null>(null);
+  const [request, setRequest] = useState<
+    (() => Promise<AxiosResponse<ILocations>>) | null
+  >(null);
 
   const {
     status: queryStatus,
@@ -28,17 +33,17 @@ export const useGeolocationAPI = () => {
   });
 
   useEffect(() => {
-    if (!navigator.geolocation) {
+    if (!navigator?.geolocation) {
       setStatus(GeolocationStatus.NotSupported);
     } else {
-      setStatus(GeolocationStatus.Success);
       navigator.geolocation.getCurrentPosition(
         (position) => {
+          setStatus(GeolocationStatus.Success);
           setCoords({
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
           });
-          setRequest(
+          setRequest(() =>
             getReverseGeocodeRequest(
               position.coords.latitude,
               position.coords.longitude

@@ -7,18 +7,15 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-import { INewsAPIArticle, NewsAPIEndpoints } from '@/shared/NewsAPI';
+import { NewsAPIEndpoints } from '@/shared/NewsAPI';
+
 import { NewsItem } from '@/entities/News/ui/NewsItem';
 import {
   ArticleSection,
   ArticleSlide,
   ArticleSwiper,
-} from '@/entities/News/ui/UIKit';
-
-interface IProps {
-  articles?: INewsAPIArticle[];
-  totalCount?: number;
-}
+} from '@/entities/News/ui/NewsList.styles';
+import { IProps } from '@/entities/News/ui/NewsList.types';
 
 export const NewsList = <T extends NewsAPIEndpoints>({
   articles,

@@ -1,6 +1,8 @@
 import { useContext } from 'react';
-import { ParamsContext } from '@/entities/QueryParams/model/ContextProvider';
+
 import { INewsAPIAllParams, INewsAPIHeadlineParams } from '@/shared/NewsAPI';
+
+import { ParamsContext } from '@/entities/QueryParams/model/ContextProvider';
 
 export const useParams = () => {
   const { params, setParams } = useContext(ParamsContext);

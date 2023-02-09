@@ -1,4 +1,7 @@
-import { IAllParams, IHeadlineParams } from '@/shared/NewsAPI/api/types';
+import {
+  IAllParams,
+  IHeadlineParams,
+} from '@/shared/NewsAPI/api/getRequest.types';
 
 /**
  * Validates and casts get parameters for News API request

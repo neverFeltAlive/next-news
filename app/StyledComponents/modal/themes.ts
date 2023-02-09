@@ -1,4 +1,4 @@
-import { ITheme } from '@/app/StyledComponents/modal/types';
+import { ITheme } from '@/app/StyledComponents/index.types';
 
 //region Themes
 const theme = {
@@ -11,7 +11,7 @@ const light = {
   lightColor: '#e1eff6',
   shadowColor: '#cee6ff',
   accentColor: '#EF959C',
-  secondAccentColor: '#41337A',
+  secondAccentColor: '#77a9da',
 };
 
 const dark = {

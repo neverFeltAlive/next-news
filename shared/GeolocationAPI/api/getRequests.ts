@@ -1,4 +1,6 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+
+import { ILocations } from '@/shared/GeolocationAPI/lib/types';
 
 const API_KEY = process.env.DADATA_API_KEY;
 const API_TOKEN = 'Token ' + API_KEY;
@@ -12,7 +14,7 @@ const REVERSE_URL =
  */
 export const getReverseGeocodeRequest =
   (lat: number, lon: number) => async () =>
-    await axios.get(REVERSE_URL, {
+    await axios.get<ILocations>(REVERSE_URL, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',

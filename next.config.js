@@ -10,6 +10,14 @@ module.exports = withPWA({
   compiler: {
     styledComponents: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
+  },
   env: {
     NEWS_API_KEY: process.env.NEWS_API_KEY,
     DADATA_API_KEY: process.env.DADATA_API_KEY,

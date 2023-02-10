@@ -1,9 +1,5 @@
-import Image from 'next/image';
-
 import styled from 'styled-components';
 
-export const StyledImage = styled(Image)`
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+export const Wrapper = styled.div<{ isLoading: boolean }>`
+  opacity: ${(props) => (props.isLoading ? 0 : 1)};
 `;

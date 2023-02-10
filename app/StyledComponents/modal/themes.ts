@@ -16,10 +16,10 @@ const light = {
 
 const dark = {
   mainColor: '#E8E9EB',
-  lightColor: '#494850',
+  lightColor: '#5c5b64',
   shadowColor: '#2C2C34',
   accentColor: '#EF959C',
-  secondAccentColor: '#41337A',
+  secondAccentColor: '#5c5c69',
 };
 //endregion
 

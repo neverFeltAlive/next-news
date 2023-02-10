@@ -1,8 +1,9 @@
 import { FC } from 'react';
 
-import { INewsAPIArticle } from '@/shared/NewsAPI';
 import { UICustomImage, UIDate } from '@/shared/UIKit';
 import { getMonthFromDate, numberToDateFormat } from '@/shared/UIKit';
+
+import noImage from '@/public/images/no-image.png';
 
 import {
   Article,
@@ -11,50 +12,65 @@ import {
   ArticleDescription,
   ArticleFooter,
   ArticleImage,
+  ArticleLink,
   ArticleTitle,
 } from '@/entities/News/ui/NewsItem.styled';
+import { IProps } from '@/entities/News/ui/NewsItem.types';
+import { AnimatePresence } from 'framer-motion';
 
-export const NewsItem: FC<INewsAPIArticle> = ({
+export const NewsItem: FC<IProps> = ({
   author,
   description,
   publishedAt,
   title,
   urlToImage,
   url,
+  isFull = false,
 }) => {
   const publishedDate = !!publishedAt && new Date(Date.parse(publishedAt));
 
   return (
-    <Article>
-      <>
-        {!!title && <ArticleTitle>{title}</ArticleTitle>}
-        <ArticleBody>
-          {!!urlToImage && (
-            <ArticleImage>
-              <UICustomImage
-                src={urlToImage}
-                alt="Image from the article"
-                width={550}
-                height={500}
+    <AnimatePresence>
+      <Article isFull={isFull}>
+        <>
+          {!!title && <ArticleTitle isFull={isFull}>{title}</ArticleTitle>}
+          <ArticleBody>
+            {!!urlToImage && (
+              <ArticleImage>
+                <UICustomImage
+                  fallbackSrc={noImage}
+                  src={urlToImage}
+                  alt="Image from the article"
+                  width={550}
+                  height={300}
+                />
+              </ArticleImage>
+            )}
+          </ArticleBody>
+          <div>
+            {!!description && isFull && (
+              <ArticleDescription>{description}</ArticleDescription>
+            )}
+
+            {!!url && isFull && (
+              <ArticleLink href={url}>Go to source</ArticleLink>
+            )}
+            <ArticleFooter>
+              <ArticleAuthor
+                dangerouslySetInnerHTML={{ __html: author || '' }}
               />
-            </ArticleImage>
-          )}
-          {!!description && (
-            <ArticleDescription>{description}</ArticleDescription>
-          )}
-        </ArticleBody>
-        <ArticleFooter>
-          <ArticleAuthor>{author || ''}</ArticleAuthor>
-          {!!publishedDate && (
-            <UIDate
-              year={publishedDate.getFullYear()}
-              month={getMonthFromDate(publishedDate)}
-              day={numberToDateFormat(publishedDate.getDay())}
-            />
-          )}
-        </ArticleFooter>
-      </>
-    </Article>
+              {!!publishedDate && (
+                <UIDate
+                  year={publishedDate.getFullYear()}
+                  month={getMonthFromDate(publishedDate)}
+                  day={numberToDateFormat(publishedDate.getDay())}
+                />
+              )}
+            </ArticleFooter>
+          </div>
+        </>
+      </Article>
+    </AnimatePresence>
   );
 };
 

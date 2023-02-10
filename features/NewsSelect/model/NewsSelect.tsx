@@ -26,9 +26,14 @@ export const NewsSelect = <T extends 'country' | 'sortBy'>({
   const getValue = () =>
     !!paramName ? params[paramName as keyof typeof params] : '';
 
+  const getDefaultValue = () =>
+    getValue() || paramName === 'country' ? 'Country' : 'Sort';
+
+  if (paramName === 'country') console.log(params);
+
   return (
     <UISelect
-      defaultValue={paramName === 'country' ? 'Country' : 'Sort'}
+      defaultValue={getDefaultValue()}
       selected={
         Object.keys(options).find(
           (key) => options[key as keyof OptionsType<T>] === getValue()

@@ -27,13 +27,14 @@ export const SelectOptions = styled.div<{ isOpen: boolean }>`
   overflow: hidden;
   width: 200px;
   z-index: 10;
+  opacity: ${(props) => (props.isOpen ? 1 : 0)};
   left: 0;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   pointer-events: ${(props) => (props.isOpen ? 'all' : 'none')};
   background-color: ${(props) => props.theme.lightColor};
   height: ${(props) => (props.isOpen ? 'fit-content' : '0')};
-  transition: all 1s ease-in-out;
+  transition: height 1s ease-in-out;
 `;
 
 export const Icon = styled.button<{ isOpen: boolean }>`

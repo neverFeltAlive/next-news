@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { ThemeContext } from 'styled-components';
+import { CustomThemeContext } from '@/app/StyledComponents/modal/ThemeWrapper';
 
 export const useTheme = () => {
-  const { isDark, setIsDark } = useContext(ThemeContext);
-  return [isDark, setIsDark];
+  const { isDark, setIsDark } = useContext(CustomThemeContext);
+  return [isDark, setIsDark] as [boolean, (value: boolean) => void];
 };

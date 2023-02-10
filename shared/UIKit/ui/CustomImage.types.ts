@@ -1,3 +1,5 @@
-import { ImageProps } from 'next/dist/client/image';
+import { ImageProps, StaticImageData } from 'next/dist/client/image';
 
-export interface IProps extends ImageProps {}
+export interface IProps extends ImageProps {
+  fallbackSrc: string | StaticImageData;
+}

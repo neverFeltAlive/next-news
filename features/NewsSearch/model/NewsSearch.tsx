@@ -22,6 +22,7 @@ export const NewsSearch = () => {
       clearValue={() => setValue('')}
       onSubmit={handleSubmit}
       inputProps={{
+        placeholder: 'Search...',
         value,
         onChange: handleChange,
       }}

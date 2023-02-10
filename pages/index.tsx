@@ -9,7 +9,6 @@ import { ThemeToggle } from '@/features/ThemeToggle';
 import { News } from '@/widgets/News';
 
 // TODO: declaration files TS
-// TODO: integrate geolocation API
 // TODO: pwa
 // TODO: ssr
 // TODO: test
@@ -18,10 +17,9 @@ import { News } from '@/widgets/News';
 // TODO: animation (https://www.framer.com/motion/)
 // TODO: lazy load news pages
 // TODO: new news notifications
-// TODO: fallback for loading images
 // TODO: fallback for errored images
 // TODO: check sorting query
-// TODO: cookie
+// TODO: cookie / local storage / session storage
 
 const Container = styled.div`
   width: 100%;

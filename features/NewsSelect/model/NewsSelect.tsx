@@ -29,8 +29,6 @@ export const NewsSelect = <T extends 'country' | 'sortBy'>({
   const getDefaultValue = () =>
     getValue() || paramName === 'country' ? 'Country' : 'Sort';
 
-  if (paramName === 'country') console.log(params);
-
   return (
     <UISelect
       defaultValue={getDefaultValue()}

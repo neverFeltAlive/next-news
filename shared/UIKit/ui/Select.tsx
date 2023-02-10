@@ -27,7 +27,7 @@ export const Select = <T extends string | number>({
   };
 
   return (
-    <StyledSelect>
+    <StyledSelect isOpen={isOpen}>
       <SelectHead isSelected={!!selected}>
         {!!selected ? selected : defaultValue}
         <Icon isOpen={isOpen} onClick={handleOpenClick}>

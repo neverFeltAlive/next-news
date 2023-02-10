@@ -12,7 +12,7 @@ const NewsItemPopup: FC<IProps> = ({ article, closePopup }) => {
       <div id="news_item_popup_id"></div>
       {!!article && (
         <Popup wrapperId="news_item_popup_id" closePopup={closePopup}>
-          <Wrapper>
+          <Wrapper onClick={(event) => event.stopPropagation()}>
             <NewsItem isFull={true} {...article} />
           </Wrapper>
         </Popup>

@@ -2,13 +2,21 @@ import styled from 'styled-components';
 import { rgba } from 'polished';
 
 //region Styled
-export const StyledSelect = styled.div`
+export const StyledSelect = styled.div<{ isOpen: boolean }>`
   position: relative;
   background-color: ${(props) => props.theme.lightColor};
   width: 200px;
   padding: 5px 10px;
   border-radius: 10px;
   box-sizing: border-box;
+  border-bottom-right-radius: ${(props) => (props.isOpen ? 0 : '10px')};
+  border-bottom-left-radius: ${(props) => (props.isOpen ? 0 : '10px')};
+  border: ${(props) =>
+    props.isOpen
+      ? `1px solid ${props.theme.accentColor}`
+      : '1px solid transparent'};
+  border-bottom: none;
+  transition: all 0.3s ease-in-out;
 `;
 
 export const SelectHead = styled.div<{ isSelected: boolean }>`
@@ -22,19 +30,38 @@ export const SelectHead = styled.div<{ isSelected: boolean }>`
 `;
 
 export const SelectOptions = styled.div<{ isOpen: boolean }>`
-  padding-top: 10px;
   position: absolute;
   overflow: hidden;
   width: 200px;
   z-index: 10;
-  opacity: ${(props) => (props.isOpen ? 1 : 0)};
-  left: 0;
+  left: -1px;
+  box-sizing: border-box;
+  //opacity: ${(props) => (props.isOpen ? 1 : 0)};
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   pointer-events: ${(props) => (props.isOpen ? 'all' : 'none')};
   background-color: ${(props) => props.theme.lightColor};
-  height: ${(props) => (props.isOpen ? 'fit-content' : '0')};
-  transition: height 1s ease-in-out;
+  height: ${(props) => (props.isOpen ? '120px' : '0')};
+  border: ${(props) =>
+    props.isOpen
+      ? `1px solid ${props.theme.accentColor}`
+      : '1px solid transparent'};
+  transition: all 0.3s ease-in-out;
+  border-top: none;
+
+  ${(props) =>
+    !props.isOpen &&
+    `
+    border-bottom: none;
+  `}
+  overflow-y: auto;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const Icon = styled.button<{ isOpen: boolean }>`

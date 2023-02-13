@@ -1,34 +1,55 @@
-import { useQuery } from 'react-query';
-import { AxiosResponse } from 'axios';
+import { useState } from 'react';
 
-import {
-  getNewsAPIRequest,
-  INewsAPIAllParams,
-  INewsAPIHeadlineParams,
-  INewsAPIResponse,
-  NewsAPIEndpoints,
-} from '@/shared/NewsAPI';
+import { useInfiniteQuery } from 'react-query';
 
-export interface IProps<T extends NewsAPIEndpoints> {
-  endpoint: T extends NewsAPIEndpoints.All
-    ? NewsAPIEndpoints.All
-    : NewsAPIEndpoints.Headlines;
-  queryParams: paramType<T>;
-}
+import { getNewsAPIRequest, NewsAPIEndpoints } from '@/shared/NewsAPI';
 
-type paramType<T extends NewsAPIEndpoints> = T extends NewsAPIEndpoints.All
-  ? INewsAPIAllParams
-  : INewsAPIHeadlineParams;
+import { IProps } from './useNews.types';
+
+const PAGE_SIZE = 20;
 
 export const useNews = <T extends NewsAPIEndpoints>({
   endpoint,
   queryParams,
 }: IProps<T>) => {
-  const request = getNewsAPIRequest<T>(endpoint, queryParams as paramType<T>);
-  const { data: response } = useQuery(
+  const request = getNewsAPIRequest<T>(endpoint, queryParams);
+  const [currentPageIndex, setCurrentPageIndex] = useState<number>(0);
+
+  const {
+    fetchNextPage,
+    fetchPreviousPage,
+    hasNextPage,
+    hasPreviousPage,
+    isFetchingNextPage,
+    isFetchingPreviousPage,
+    isLoading,
+    isFetched,
+    ...result
+  } = useInfiniteQuery(
     ['news list', endpoint, queryParams],
-    request
+    ({ pageParam = 0 }) => {
+      setCurrentPageIndex(pageParam);
+      return request(pageParam, PAGE_SIZE);
+    },
+    {
+      getNextPageParam: (lastPage) =>
+        lastPage.totalResults > PAGE_SIZE * (currentPageIndex + 1)
+          ? currentPageIndex + 1
+          : undefined,
+      getPreviousPageParam: () =>
+        currentPageIndex > 0 ? currentPageIndex - 1 : undefined,
+    }
   );
 
-  return { ...response?.data };
+  return {
+    fetchNextPage,
+    fetchPreviousPage,
+    hasNextPage,
+    hasPreviousPage,
+    isFetchingNextPage,
+    isFetchingPreviousPage,
+    isLoading,
+    isFetched,
+    ...result?.data?.pages[currentPageIndex],
+  };
 };

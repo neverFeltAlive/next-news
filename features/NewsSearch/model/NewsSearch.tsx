@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, FormEventHandler, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
 import { UISearch } from '@/shared/UIKit';
 

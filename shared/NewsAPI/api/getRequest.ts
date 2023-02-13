@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-import { Endpoints } from '@/shared/NewsAPI/api/enums';
 import { validateParams } from '@/shared/NewsAPI/lib/validateParams';
 import {
   IAllParams,
   IHeadlineParams,
   IResponse,
+  Endpoints,
 } from '@/shared/NewsAPI/api/getRequest.types';
 
 const API_KEY = process.env.NEWS_API_KEY;
@@ -23,10 +23,14 @@ export const getRequest =
     endpoint: T extends Endpoints.All ? Endpoints.All : Endpoints.Headlines,
     params?: T extends Endpoints.All ? IAllParams : IHeadlineParams
   ) =>
-  async () =>
-    await axios.get<IResponse>(endpoint, {
+  async (page: number, pageSize: number) => {
+    const result = await axios.get<IResponse>(endpoint, {
       params: {
         ...validateParams(params || { q: '' }),
+        page: page,
+        pageSize: pageSize,
         apiKey: API_KEY,
       },
     });
+    return result.data;
+  };

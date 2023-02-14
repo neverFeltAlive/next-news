@@ -8,20 +8,20 @@ import { ThemeToggle } from '@/features/ThemeToggle';
 
 import { News } from '@/widgets/News';
 
-// TODO: declaration files TS
 // TODO: pwa
 // TODO: ssr
-// TODO: test
+// TODO: new news notifications
+// TODO: cookie / local storage / session storage
+
+// TODO: declaration files TS
+// TODO: check sorting query
 // TODO: close select on outside click
+// TODO: test
 // TODO: loader
 // TODO: animation (https://www.framer.com/motion/)
-// TODO: lazy load news pages
-// TODO: new news notifications
-// TODO: fallback for errored images
-// TODO: check sorting query
-// TODO: cookie / local storage / session storage
-// TODO: prettier for imports
+// TODO: revisit lazy load news pages
 // TODO: category select
+// TODO: fallback for errored images
 
 const Container = styled.div`
   width: 100%;

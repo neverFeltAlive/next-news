@@ -4,7 +4,16 @@
   "semi": true,
   "singleQuote": true,
   "importOrder": [
-    "^react$|^next", "react-query|styled-components|swiper|polished", "<THIRD_PARTY_MODULES>", "@/shared", "@/entities", "@/features", "@/widgets", "^[./]", "@/public", "@next/font|react-icons"
+    "^react$|^next",
+    "react-query|styled-components|swiper|polished",
+    "<THIRD_PARTY_MODULES>",
+    "@/shared",
+    "@/entities",
+    "@/features",
+    "@/widgets",
+    "^[./]",
+    "@/public",
+    "@next/font|react-icons"
   ],
   "importOrderSeparation": true
 }

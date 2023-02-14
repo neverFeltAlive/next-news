@@ -8,8 +8,8 @@ import {
   NewsAPIEndpoints,
 } from '@/shared/NewsAPI';
 
-import { IProps } from './useNewsAPI.types';
 import { PAGE_SIZE } from '../lib/news.config';
+import { IProps } from './useNewsAPI.types';
 
 export const useNewsAPI = <T extends NewsAPIEndpoints>({
   endpoint,

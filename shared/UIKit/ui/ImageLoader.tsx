@@ -1,4 +1,4 @@
-import { Loader, Spinner } from '@/shared/UIKit/ui/ImageLoader.styles';
+import { Loader, Spinner } from './ImageLoader.styles';
 
 export const ImageLoader = () => {
   return (

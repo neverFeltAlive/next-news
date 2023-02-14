@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 
 import { NewsAPIEndpoints } from '@/shared/NewsAPI';
 
+import { useLocation } from '@/entities/Location';
 import { useNewsAPI } from '@/entities/News';
 import { useQueryParams } from '@/entities/QueryParams';
-import { useLocation } from '@/entities/Location';
 
 import News from '../ui/News';
 

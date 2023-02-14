@@ -1,12 +1,7 @@
 import { FC } from 'react';
 
-import { IProps } from '@/shared/UIKit/ui/Date.types';
-import {
-  DateDay,
-  DateMonth,
-  DateYear,
-  StyledDate,
-} from '@/shared/UIKit/ui/Date.styles';
+import { DateDay, DateMonth, DateYear, StyledDate } from './Date.styles';
+import { IProps } from './Date.types';
 
 export const Date: FC<IProps> = ({ year, day, month }) => {
   return (

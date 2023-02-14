@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
-import { IProps } from '@/app/ReactQuery/modal/Initializer.types';
+import { IProps } from './Initializer.types';
 
 const queryClient = new QueryClient({
   defaultOptions: {

@@ -1,7 +1,7 @@
 import { FC, InputHTMLAttributes } from 'react';
 
-import styled from 'styled-components';
 import { rgba } from 'polished';
+import styled from 'styled-components';
 
 const StyledInput = styled.input`
   border: none;

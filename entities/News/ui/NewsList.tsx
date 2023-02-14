@@ -1,15 +1,17 @@
-import { Fragment, ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 
-import { SwiperSlide } from 'swiper/react';
-import { Swiper } from 'swiper/types';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { SwiperSlide } from 'swiper/react';
+import { Swiper } from 'swiper/types';
 
 import { INewsAPIArticle, NewsAPIEndpoints } from '@/shared/NewsAPI';
 
+import { PAGE_SIZE } from '../lib/news.config';
 import { NewsItem } from './NewsItem';
+import NewsItemPopup from './NewsItemPopup';
 import {
   ArticleSection,
   ArticleSlide,
@@ -19,8 +21,6 @@ import {
   TotalCountNumber,
 } from './NewsList.styles';
 import { IProps } from './NewsList.types';
-import NewsItemPopup from './NewsItemPopup';
-import { PAGE_SIZE } from '../lib/news.config';
 
 export const NewsList = <T extends NewsAPIEndpoints>({
   articles,

@@ -1,5 +1,5 @@
-import { IProps } from '@/shared/UIKit/ui/Option.types';
-import { StyledOption } from '@/shared/UIKit/ui/Option.styles';
+import { StyledOption } from './Option.styles';
+import { IProps } from './Option.types';
 
 export const Option = <T,>({
   children,

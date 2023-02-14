@@ -2,9 +2,9 @@ import React, { FC, useState } from 'react';
 
 import { ThemeProvider } from 'styled-components';
 
-import { darkTheme, lightTheme } from '@/app/StyledComponents/modal/themes';
-import { GlobalStyle } from '@/app/StyledComponents/ui/GlobalStyle';
-import { IProps } from '@/app/StyledComponents/modal/ThemeWrapper.types';
+import { GlobalStyle } from '../ui/GlobalStyle';
+import { IProps } from './ThemeWrapper.types';
+import { darkTheme, lightTheme } from './themes';
 
 export const CustomThemeContext = React.createContext({
   isDark: false,

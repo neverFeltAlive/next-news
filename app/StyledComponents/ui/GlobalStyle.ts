@@ -1,6 +1,8 @@
-import { Lato } from '@next/font/google';
 import { createGlobalStyle } from 'styled-components';
-import { ITheme } from '@/app/StyledComponents/index.types';
+
+import { ITheme } from '../index.types';
+
+import { Lato } from '@next/font/google';
 
 //region Fonts
 const lato = Lato({
@@ -15,7 +17,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
     line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
   }
-  
+
   body {
     margin: 0;
     padding: 0;
@@ -23,7 +25,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
     font-size: 20px;
     font-weight: 400;
     color: ${(props) => props.theme.mainColor};
-    
+
     background-color: ${(props) => props.theme.shadowColor}
   }
 

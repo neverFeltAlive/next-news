@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import { Swiper } from 'swiper/react';
 
 export const ArticleSection = styled.section`

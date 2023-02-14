@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-import { validateParams } from '@/shared/NewsAPI/lib/validateParams';
+import { validateParams } from '../lib/validateParams';
 import {
   IAllParams,
   IHeadlineParams,
   IResponse,
   Endpoints,
-} from '@/shared/NewsAPI/api/getRequest.types';
+} from './getRequest.types';
 
 const API_KEY = process.env.NEWS_API_KEY;
 const BASE_URL = 'https://newsapi.org/v2';
@@ -28,7 +28,7 @@ export const getRequest =
       params: {
         ...validateParams(params || { q: '' }),
         page: page,
-        pageSize: pageSize,
+        pageSize: Math.min(Math.max(1, pageSize), 100),
         apiKey: API_KEY,
       },
     });

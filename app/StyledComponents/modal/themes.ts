@@ -1,4 +1,4 @@
-import { ITheme } from '@/app/StyledComponents/index.types';
+import { ITheme } from '../index.types';
 
 //region Themes
 const theme = {

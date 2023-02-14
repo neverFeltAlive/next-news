@@ -3,10 +3,7 @@ import { setOptionValueType, UIOption, UISelect } from '@/shared/UIKit';
 
 import { useQueryParams } from '@/entities/QueryParams';
 
-import {
-  IProps,
-  OptionsType,
-} from '@/features/NewsSelect/model/NewsSelect.types';
+import { IProps, OptionsType } from './NewsSelect.types';
 
 export const NewsSelect = <T extends 'country' | 'sortBy'>({
   options,

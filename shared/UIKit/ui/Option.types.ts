@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { setValueType } from '@/shared/UIKit/index.types';
+
+import { setValueType } from '../index.types';
 
 export interface IProps<T> {
   value: T;

@@ -1,8 +1,9 @@
 import { FC } from 'react';
+
 import { createPortal } from 'react-dom';
 
-import { IProps } from '@/shared/Popup/ui/Popup.types';
-import { Container, Wrapper } from '@/shared/Popup/ui/Popup.styles';
+import { Container, Wrapper } from './Popup.styles';
+import { IProps } from './Popup.types';
 
 export const Popup: FC<IProps> = ({ children, wrapperId, closePopup }) => {
   return createPortal(

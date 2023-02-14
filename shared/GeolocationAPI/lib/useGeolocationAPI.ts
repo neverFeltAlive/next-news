@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 
 import { useQuery } from 'react-query';
+
 import { AxiosResponse } from 'axios';
 
-import {
-  GeolocationStatus,
-  ILocations,
-} from '@/shared/GeolocationAPI/lib/types';
-import { getReverseGeocodeRequest } from '@/shared/GeolocationAPI/api/getRequests';
+import { getReverseGeocodeRequest } from '../api/getRequests';
+import { GeolocationStatus, ILocations } from './useGeolocationAPI.types';
 
 interface ICoords {
   latitude: number;

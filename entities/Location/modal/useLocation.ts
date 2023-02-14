@@ -5,6 +5,7 @@ import {
   useGeolocationAPI,
 } from '@/shared/GeolocationAPI';
 import { NewsAPICountries } from '@/shared/NewsAPI';
+
 export const useLocation = () => {
   const countries = NewsAPICountries;
   const [country, setCountry] = useState<NewsAPICountries>(

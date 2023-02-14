@@ -1,9 +1,10 @@
-import { INewsAPIArticle, INewsAPIResponse } from '@/shared/NewsAPI';
 import {
   FetchNextPageOptions,
   FetchPreviousPageOptions,
   InfiniteQueryObserverResult,
 } from 'react-query';
+
+import { INewsAPIArticle, INewsAPIResponse } from '@/shared/NewsAPI';
 
 export interface IProps {
   totalResults?: number;

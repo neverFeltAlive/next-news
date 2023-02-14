@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
+import { AnimatePresence } from 'framer-motion';
+
 import { UICustomImage, UIDate } from '@/shared/UIKit';
 import { getMonthFromDate, numberToDateFormat } from '@/shared/UIKit';
-
-import noImage from '@/public/images/no-image.png';
 
 import {
   Article,
@@ -14,9 +14,10 @@ import {
   ArticleImage,
   ArticleLink,
   ArticleTitle,
-} from '@/entities/News/ui/NewsItem.styled';
-import { IProps } from '@/entities/News/ui/NewsItem.types';
-import { AnimatePresence } from 'framer-motion';
+} from './NewsItem.styled';
+import { IProps } from './NewsItem.types';
+
+import noImage from '@/public/images/no-image.png';
 
 export const NewsItem: FC<IProps> = ({
   author,

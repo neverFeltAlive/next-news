@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { rgba } from 'polished';
+import styled from 'styled-components';
 
 export const Article = styled.article<{ isFull: boolean }>`
   background-color: ${(props) => props.theme.lightColor};

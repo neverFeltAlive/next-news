@@ -1,4 +1,4 @@
-import { ILocations } from '@/shared/GeolocationAPI/lib/types';
+import { ILocations } from '@/shared/GeolocationAPI/lib/useGeolocationAPI.types';
 
 export const getCountryFromLocation = (location?: ILocations) =>
   location?.suggestions[0].data.country;

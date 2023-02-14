@@ -1,11 +1,8 @@
-import { createContext, FC, ReactNode, useState } from 'react';
+import { createContext, FC, useState } from 'react';
 
 import { INewsAPIAllParams, INewsAPIHeadlineParams } from '@/shared/NewsAPI';
 
-import {
-  IContext,
-  IProps,
-} from '@/entities/QueryParams/model/ContextProvider.types';
+import { IContext, IProps } from './ContextProvider.types';
 
 const initialParams = {
   q: '',

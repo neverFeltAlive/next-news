@@ -1,12 +1,7 @@
 import { useState } from 'react';
 
-import {
-  Icon,
-  SelectHead,
-  SelectOptions,
-  StyledSelect,
-} from '@/shared/UIKit/ui/Select.styles';
-import { IProps } from '@/shared/UIKit/ui/Select.types';
+import { Icon, SelectHead, SelectOptions, StyledSelect } from './Select.styles';
+import { IProps } from './Select.types';
 
 import { FaAngleDown } from 'react-icons/fa';
 

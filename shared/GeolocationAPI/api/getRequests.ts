@@ -1,6 +1,6 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
-import { ILocations } from '@/shared/GeolocationAPI/lib/types';
+import { ILocations } from '../lib/useGeolocationAPI.types';
 
 const API_KEY = process.env.DADATA_API_KEY;
 const API_TOKEN = 'Token ' + API_KEY;

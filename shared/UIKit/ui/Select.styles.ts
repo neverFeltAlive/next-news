@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { rgba } from 'polished';
+import styled from 'styled-components';
 
 //region Styled
 export const StyledSelect = styled.div<{ isOpen: boolean }>`

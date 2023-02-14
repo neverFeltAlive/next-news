@@ -2,9 +2,9 @@ import { FC } from 'react';
 
 import { Popup } from '@/shared/Popup';
 
-import { IProps } from '@/entities/News/ui/NewsItemPopup.types';
-import { Wrapper } from '@/entities/News/ui/NewsItemPopup.styles';
-import NewsItem from '@/entities/News/ui/NewsItem';
+import NewsItem from './NewsItem';
+import { Wrapper } from './NewsItemPopup.styles';
+import { IProps } from './NewsItemPopup.types';
 
 const NewsItemPopup: FC<IProps> = ({ article, closePopup }) => {
   return (

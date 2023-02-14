@@ -1,11 +1,11 @@
-import { FC, useState } from 'react';
 import Image from 'next/image';
+import { FC, useState } from 'react';
 
 import styled from 'styled-components';
 
-import { IProps } from '@/shared/UIKit/ui/CustomImage.types';
-import ImageLoader from '@/shared/UIKit/ui/ImageLoader';
-import { Wrapper } from '@/shared/UIKit/ui/CustomImage.styles';
+import { Wrapper } from './CustomImage.styles';
+import { IProps } from './CustomImage.types';
+import ImageLoader from './ImageLoader';
 
 const LocalImage = styled(Image)`
   width: 100%;

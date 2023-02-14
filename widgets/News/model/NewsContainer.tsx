@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { useCookies } from 'react-cookie';
+
 import { NewsAPIEndpoints } from '@/shared/NewsAPI';
 
 import { useLocation } from '@/entities/Location';
@@ -16,8 +18,6 @@ export const NewsContainer = () => {
     endpoint: endpoint,
     queryParams: { country: country, ...queryParams },
   });
-
-  console.log(news);
 
   useEffect(() => {
     if (!!country) {

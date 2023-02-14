@@ -9,19 +9,20 @@ import { ThemeToggle } from '@/features/ThemeToggle';
 import { News } from '@/widgets/News';
 
 // TODO: pwa
-// TODO: ssr
 // TODO: new news notifications
-// TODO: cookie / local storage / session storage
 
-// TODO: declaration files TS
-// TODO: check sorting query
-// TODO: close select on outside click
+// TODO: ssr
 // TODO: test
 // TODO: loader
-// TODO: animation (https://www.framer.com/motion/)
-// TODO: revisit lazy load news pages
+// TODO: mobile version
 // TODO: category select
+// TODO: check sorting query
+// TODO: declaration files TS
 // TODO: fallback for errored images
+// TODO: revisit lazy load news pages
+// TODO: close select on outside click
+// TODO: cookie / localStorage / sessionStorage
+// TODO: animation (https://www.framer.com/motion/)
 
 const Container = styled.div`
   width: 100%;

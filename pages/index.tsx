@@ -20,6 +20,8 @@ import { News } from '@/widgets/News';
 // TODO: fallback for errored images
 // TODO: check sorting query
 // TODO: cookie / local storage / session storage
+// TODO: prettier for imports
+// TODO: category select
 
 const Container = styled.div`
   width: 100%;

@@ -2,20 +2,22 @@ import { useEffect, useState } from 'react';
 
 import { NewsAPIEndpoints } from '@/shared/NewsAPI';
 
-import { useNews } from '@/entities/News';
+import { useNewsAPI } from '@/entities/News';
 import { useQueryParams } from '@/entities/QueryParams';
 import { useLocation } from '@/entities/Location';
 
-import News from '@/widgets/News/ui/News';
+import News from '../ui/News';
 
 export const NewsContainer = () => {
   const [queryParams, setQueryParams] = useQueryParams();
   const [endpoint, setEndpoint] = useState(NewsAPIEndpoints.Headlines);
   const country = useLocation();
-  const { articles, totalResults } = useNews<typeof endpoint>({
+  const news = useNewsAPI<typeof endpoint>({
     endpoint: endpoint,
     queryParams: { country: country, ...queryParams },
   });
+
+  console.log(news);
 
   useEffect(() => {
     if (!!country) {
@@ -23,7 +25,7 @@ export const NewsContainer = () => {
     }
   }, [country]);
 
-  return <News articles={articles} totalResults={totalResults} />;
+  return <News {...news} />;
 };
 
 export default NewsContainer;

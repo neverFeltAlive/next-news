@@ -2,13 +2,16 @@ import { useState } from 'react';
 
 import { useInfiniteQuery } from 'react-query';
 
-import { getNewsAPIRequest, NewsAPIEndpoints } from '@/shared/NewsAPI';
+import {
+  getNewsAPIRequest,
+  INewsAPIArticle,
+  NewsAPIEndpoints,
+} from '@/shared/NewsAPI';
 
-import { IProps } from './useNews.types';
+import { IProps } from './useNewsAPI.types';
+import { PAGE_SIZE } from '../lib/news.config';
 
-const PAGE_SIZE = 20;
-
-export const useNews = <T extends NewsAPIEndpoints>({
+export const useNewsAPI = <T extends NewsAPIEndpoints>({
   endpoint,
   queryParams,
 }: IProps<T>) => {
@@ -27,18 +30,25 @@ export const useNews = <T extends NewsAPIEndpoints>({
     ...result
   } = useInfiniteQuery(
     ['news list', endpoint, queryParams],
-    ({ pageParam = 0 }) => {
-      setCurrentPageIndex(pageParam);
+    ({ pageParam = 1 }) => {
+      setCurrentPageIndex(pageParam - 1);
       return request(pageParam, PAGE_SIZE);
     },
     {
       getNextPageParam: (lastPage) =>
         lastPage.totalResults > PAGE_SIZE * (currentPageIndex + 1)
-          ? currentPageIndex + 1
+          ? currentPageIndex + 2
           : undefined,
       getPreviousPageParam: () =>
-        currentPageIndex > 0 ? currentPageIndex - 1 : undefined,
+        currentPageIndex > 1 ? currentPageIndex - 1 : undefined,
     }
+  );
+
+  const normalizedArticles = result.data?.pages.reduce(
+    (accumulator: INewsAPIArticle[], current) => {
+      return [...accumulator, ...current.articles];
+    },
+    []
   );
 
   return {
@@ -50,6 +60,7 @@ export const useNews = <T extends NewsAPIEndpoints>({
     isFetchingPreviousPage,
     isLoading,
     isFetched,
-    ...result?.data?.pages[currentPageIndex],
+    totalResults: result?.data?.pages[currentPageIndex]?.totalResults,
+    articles: normalizedArticles,
   };
 };

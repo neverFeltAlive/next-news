@@ -1,6 +1,13 @@
 import {
+  FetchNextPageOptions,
+  FetchPreviousPageOptions,
+  InfiniteQueryObserverResult,
+} from 'react-query';
+
+import {
   INewsAPIAllParams,
   INewsAPIHeadlineParams,
+  INewsAPIResponse,
   NewsAPIEndpoints,
 } from '@/shared/NewsAPI';
 

@@ -17,3 +17,20 @@ export const ArticleSlide = styled.div<{
   scale: ${(props) => (props.isActive ? 1 : 0.5)};
   transition: scale 0.5s ease-in-out;
 `;
+
+export const ListFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+export const ListTotalCount = styled.div`
+  color: ${(props) => props.theme.mainColor};
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 600;
+`;
+
+export const TotalCountNumber = styled.span`
+  color: ${(props) => props.theme.accentColor};
+`;

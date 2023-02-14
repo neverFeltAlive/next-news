@@ -2,15 +2,14 @@ import { FC } from 'react';
 
 import { NewsAPICountries, NewsAPISortOptions } from '@/shared/NewsAPI';
 
-import NewsList from '@/entities/News';
+import { NewsList, INewsListProps } from '@/entities/News';
 
 import { NewsSearch } from '@/features/NewsSearch';
 import { NewsSelect } from '@/features/NewsSelect';
 
-import { NewsBar, NewsSelects } from '@/widgets/News/ui/News.styles';
-import { IProps } from '@/widgets/News/ui/News.types';
+import { NewsBar, NewsSelects } from '../ui/News.styles';
 
-const News: FC<IProps> = ({ articles, totalResults }) => {
+const News: FC<INewsListProps> = (props) => {
   return (
     <>
       <NewsBar>
@@ -20,7 +19,7 @@ const News: FC<IProps> = ({ articles, totalResults }) => {
           <NewsSelect<'country'> options={NewsAPICountries} />
         </NewsSelects>
       </NewsBar>
-      <NewsList articles={articles} totalCount={totalResults} />
+      <NewsList {...props} />
     </>
   );
 };

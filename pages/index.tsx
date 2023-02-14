@@ -14,16 +14,20 @@ import { News } from '@/widgets/News';
 // TODO: ssr
 // TODO: test
 // TODO: loader
+// TODO: select search
+// TODO: generic search
 // TODO: mobile version
 // TODO: category select
-// TODO: check sorting query
 // TODO: declaration files TS
+
+// TODO: check sorting query
 // TODO: fallback for errored images
 // TODO: revisit lazy load news pages
 // TODO: close select on outside click
 // TODO: cookie / localStorage / sessionStorage
 // TODO: animation (https://www.framer.com/motion/)
 
+//region Styled
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -43,6 +47,7 @@ const ToggleContainer = styled.div`
   top: 10px;
   right: 10px;
 `;
+//endregion
 
 export default function Home() {
   return (

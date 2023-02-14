@@ -1,6 +1,6 @@
 import { FC, FocusEvent, useRef } from 'react';
 
-import Input from './Input';
+import Input from '../Input/Input';
 import { Button, ClearButton, Form } from './Search.styles';
 import { IProps } from './Search.types';
 

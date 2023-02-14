@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 
-import { setValueType } from '../index.types';
+import { setValueType } from '../../index.types';
 
 export interface IProps<T> {
   defaultValue: string;

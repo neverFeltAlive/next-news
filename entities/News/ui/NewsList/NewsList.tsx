@@ -9,9 +9,9 @@ import { Swiper } from 'swiper/types';
 
 import { INewsAPIArticle, NewsAPIEndpoints } from '@/shared/NewsAPI';
 
-import { PAGE_SIZE } from '../lib/news.config';
-import { NewsItem } from './NewsItem';
-import NewsItemPopup from './NewsItemPopup';
+import { PAGE_SIZE } from '../../lib/news.config';
+import { NewsItem } from '../NewsItem/NewsItem';
+import NewsItemPopup from '../NewsItemPopup/NewsItemPopup';
 import {
   ArticleSection,
   ArticleSlide,

@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { Popup } from '@/shared/Popup';
 
-import NewsItem from './NewsItem';
+import NewsItem from '../NewsItem/NewsItem';
 import { Wrapper } from './NewsItemPopup.styles';
 import { IProps } from './NewsItemPopup.types';
 

@@ -3,9 +3,10 @@ import { FC, useState } from 'react';
 
 import styled from 'styled-components';
 
+import { ImageFallback } from '../ImageFallback/ImageFallback';
+import ImageLoader from '../ImageLoader/ImageLoader';
 import { Wrapper } from './CustomImage.styles';
 import { IProps } from './CustomImage.types';
-import ImageLoader from './ImageLoader';
 
 const LocalImage = styled(Image)`
   width: 100%;
@@ -17,6 +18,7 @@ const LocalImage = styled(Image)`
 export const CustomImage: FC<IProps> = ({ src, fallbackSrc, ...props }) => {
   const [imageSrc, setImageSrc] = useState(src);
   const [isLoading, setIsLoading] = useState(true);
+  const [isErrored, setIsErrored] = useState(false);
 
   const handleComplete = () => {
     setIsLoading(false);
@@ -25,19 +27,24 @@ export const CustomImage: FC<IProps> = ({ src, fallbackSrc, ...props }) => {
   const handleError = () => {
     setImageSrc(fallbackSrc);
     setIsLoading(false);
+    setIsErrored(true);
   };
 
   return (
     <>
-      {!!isLoading && <ImageLoader />}
-      <Wrapper isLoading={isLoading}>
-        <LocalImage
-          {...props}
-          src={imageSrc}
-          onLoadingComplete={handleComplete}
-          onError={handleError}
-        />
-      </Wrapper>
+      {isLoading && <ImageLoader />}
+      {isErrored ? (
+        <ImageFallback />
+      ) : (
+        <Wrapper isLoading={isLoading}>
+          <LocalImage
+            {...props}
+            src={imageSrc}
+            onLoadingComplete={handleComplete}
+            onError={handleError}
+          />
+        </Wrapper>
+      )}
     </>
   );
 };

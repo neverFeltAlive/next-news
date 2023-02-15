@@ -11,8 +11,8 @@
     "@/entities",
     "@/features",
     "@/widgets",
-    "^[./]",
-    "@/public",
+    "^./|^../",
+    "@/public|public",
     "@next/font|react-icons"
   ],
   "importOrderSeparation": true

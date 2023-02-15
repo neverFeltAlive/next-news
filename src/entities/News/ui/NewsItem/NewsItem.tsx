@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { AnimatePresence } from 'framer-motion';
 
-import { UICustomImage, UIDate, UIImageFallback } from '@/shared/UIKit';
+import { UICustomImage, UIDate } from '@/shared/UIKit';
 import { getMonthFromDate, numberToDateFormat } from '@/shared/UIKit';
 
 import {
@@ -17,7 +17,7 @@ import {
 } from './NewsItem.styled';
 import { IProps } from './NewsItem.types';
 
-import noImage from '@/public/images/no-image.png';
+import noImage from '/public/images/no-image.png';
 
 export const NewsItem: FC<IProps> = ({
   author,

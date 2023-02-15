@@ -2,9 +2,9 @@ import React, { FC, useEffect, useState } from 'react';
 
 import { ThemeProvider } from 'styled-components';
 
+import { GlobalStyle } from '../ui/GlobalStyle';
 import { useCookies } from 'react-cookie';
 
-import { GlobalStyle } from '../ui/GlobalStyle';
 import { IProps } from './ThemeWrapper.types';
 import { darkTheme, lightTheme } from './themes';
 

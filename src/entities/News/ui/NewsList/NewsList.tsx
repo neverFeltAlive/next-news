@@ -37,13 +37,6 @@ export const NewsList = <T extends NewsAPIEndpoints>({
   );
   const offset = PAGE_SIZE / 4;
 
-  /**
-   * Возвращает индекс, если он валидный, если нет - максимальное / минимальное ближайшее значение
-   * @param index - индекс, который нужно проверить
-   */
-  const validateIndex = (index: number) =>
-    Math.min(Math.max(0, index), articles?.length ?? 0);
-
   const articlesToDraw = articles;
 
   useEffect(() => {

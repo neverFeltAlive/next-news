@@ -1,5 +1,8 @@
 const withPWA = require('next-pwa')({
   dest: 'public',
+  register: true,
+  skipWaiting: true,
+  // disable: process.env.NODE_ENV === 'development',
 });
 
 module.exports = withPWA({
@@ -12,9 +15,6 @@ module.exports = withPWA({
     return config;
   },
   reactStrictMode: process.env.NODE_ENV === 'development',
-  experimental: {
-    appDir: true,
-  },
   compiler: {
     styledComponents: true,
   },
@@ -30,11 +30,5 @@ module.exports = withPWA({
     NEWS_API_KEY: process.env.NEWS_API_KEY,
     DADATA_API_KEY: process.env.DADATA_API_KEY,
     DADATA_API_SECRET: process.env.DADATA_API_SECRET,
-  },
-  pwa: {
-    dest: 'public',
-    register: true,
-    skipWaiting: true,
-    disable: process.env.NODE_ENV === 'development',
   },
 });

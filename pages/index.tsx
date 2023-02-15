@@ -1,12 +1,6 @@
 import Head from 'next/head';
 
-import styled from 'styled-components';
-
-import { QueryParamsProvider } from '@/entities/QueryParams';
-
-import { ThemeToggle } from '@/features/ThemeToggle';
-
-import { News } from '@/widgets/News';
+import { HomePage } from '@/pages/Home';
 
 // TODO: pwa
 // TODO: new news notifications
@@ -14,6 +8,7 @@ import { News } from '@/widgets/News';
 // TODO: ssr
 // TODO: test
 // TODO: loader
+// TODO: date input
 // TODO: select search
 // TODO: generic search
 // TODO: mobile version
@@ -27,28 +22,6 @@ import { News } from '@/widgets/News';
 // TODO: cookie / localStorage / sessionStorage
 // TODO: animation (https://www.framer.com/motion/)
 
-//region Styled
-const Container = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-`;
-
-const Wrapper = styled.div`
-  width: 80%;
-  margin: 100px auto auto;
-`;
-
-const ToggleContainer = styled.div`
-  position: fixed;
-  top: 10px;
-  right: 10px;
-`;
-//endregion
-
 export default function Home() {
   return (
     <>
@@ -59,16 +32,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <QueryParamsProvider>
-          <Container>
-            <ToggleContainer>
-              <ThemeToggle />
-            </ToggleContainer>
-            <Wrapper>
-              <News />
-            </Wrapper>
-          </Container>
-        </QueryParamsProvider>
+        <HomePage />
       </main>
     </>
   );

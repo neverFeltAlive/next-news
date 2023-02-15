@@ -26,7 +26,9 @@ export const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
     font-weight: 400;
     color: ${(props) => props.theme.mainColor};
 
-    background-color: ${(props) => props.theme.shadowColor}
+    background: linear-gradient(205deg, ${(props) =>
+      props.theme.shadowColor} 0%, ${(props) =>
+  props.theme.shadowColor} 50%, ${(props) => props.theme.lightColor} 90%);
   }
 
   main {

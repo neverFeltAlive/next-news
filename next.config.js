@@ -14,6 +14,9 @@ module.exports = withPWA({
 
     return config;
   },
+  experimental: {
+    appDir: true,
+  },
   reactStrictMode: process.env.NODE_ENV === 'development',
   compiler: {
     styledComponents: true,
@@ -22,6 +25,10 @@ module.exports = withPWA({
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: '**',
+      },
+      {
+        protocol: 'http',
         hostname: '**',
       },
     ],

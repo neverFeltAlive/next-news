@@ -4,8 +4,8 @@ import { FC, useState } from 'react';
 import styled from 'styled-components';
 
 import { ImageFallback } from '../ImageFallback/ImageFallback';
-import ImageLoader from '../ImageLoader/ImageLoader';
-import { Wrapper } from './CustomImage.styles';
+import SpinningLoader from '../ImageLoader/SpinningLoader';
+import { LoaderWrapper, Wrapper } from './CustomImage.styles';
 import { IProps } from './CustomImage.types';
 
 const LocalImage = styled(Image)`
@@ -32,7 +32,11 @@ export const CustomImage: FC<IProps> = ({ src, fallbackSrc, ...props }) => {
 
   return (
     <>
-      {isLoading && <ImageLoader />}
+      {isLoading && (
+        <LoaderWrapper>
+          <SpinningLoader />
+        </LoaderWrapper>
+      )}
       {isErrored ? (
         <ImageFallback />
       ) : (

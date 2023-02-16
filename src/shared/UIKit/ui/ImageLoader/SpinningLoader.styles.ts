@@ -1,8 +1,7 @@
-import styled from 'styled-components';
 import { rgba } from 'polished';
+import styled from 'styled-components';
 
 export const Loader = styled.div`
-  position: absolute;
   width: 100%;
   height: 100%;
   display: flex;

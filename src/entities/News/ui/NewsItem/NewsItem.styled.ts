@@ -44,8 +44,13 @@ export const ArticleBody = styled.div``;
 export const ArticleImage = styled.div`
   position: relative;
   width: 100%;
-  max-height: 300px;
+  height: fit-content;
+  max-height: 400px;
+  min-height: 152px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ArticleDescription = styled.h5`

@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -8,6 +8,7 @@ import { SwiperSlide } from 'swiper/react';
 import { Swiper } from 'swiper/types';
 
 import { INewsAPIArticle, NewsAPIEndpoints } from '@/shared/NewsAPI';
+import { UISpinner } from '@/shared/UIKit';
 
 import { PAGE_SIZE } from '../../lib/news.config';
 import { NewsItem } from '../NewsItem/NewsItem';
@@ -18,6 +19,7 @@ import {
   ArticleSwiper,
   ListFooter,
   ListTotalCount,
+  SpinnerWrapper,
   TotalCountNumber,
 } from './NewsList.styles';
 import { IProps } from './NewsList.types';
@@ -29,6 +31,7 @@ export const NewsList = <T extends NewsAPIEndpoints>({
   hasPreviousPage,
   fetchNextPage,
   fetchPreviousPage,
+  isLoading,
 }: IProps): ReactElement => {
   const [swiper, setSwiper] = useState<Swiper | null>(null);
   const [swiperActiveIndex, setSwiperActiveIndex] = useState(1);
@@ -66,28 +69,41 @@ export const NewsList = <T extends NewsAPIEndpoints>({
             setSwiperActiveIndex(swiper.activeIndex + 1)
           }
         >
-          {!!articlesToDraw?.length &&
-            articlesToDraw.map((article, index) => (
-              <SwiperSlide
-                key={`article_${article.title}`}
-                onClick={() => handleArticleClick(index)}
-              >
-                <ArticleSlide isActive={swiperActiveIndex === index}>
-                  <NewsItem {...article} />
-                </ArticleSlide>
-              </SwiperSlide>
-            ))}
+          {isLoading ? (
+            <SpinnerWrapper>
+              <UISpinner />
+            </SpinnerWrapper>
+          ) : (
+            <>
+              {!!articlesToDraw?.length &&
+                articlesToDraw.map((article, index) => (
+                  <SwiperSlide
+                    key={`article_${article.title}`}
+                    onClick={() => handleArticleClick(index)}
+                  >
+                    <ArticleSlide isActive={swiperActiveIndex === index}>
+                      <NewsItem {...article} />
+                    </ArticleSlide>
+                  </SwiperSlide>
+                ))}
+            </>
+          )}
         </ArticleSwiper>
       </ArticleSection>
-      <ListFooter>
-        <ListTotalCount>
-          Articles Found: <TotalCountNumber>{totalResults}</TotalCountNumber>
-        </ListTotalCount>
-      </ListFooter>
-      <NewsItemPopup
-        article={activeArticle}
-        closePopup={() => setActiveArticle(null)}
-      />
+      {!!articlesToDraw?.length && (
+        <>
+          <ListFooter>
+            <ListTotalCount>
+              Articles Found:{' '}
+              <TotalCountNumber>{totalResults}</TotalCountNumber>
+            </ListTotalCount>
+          </ListFooter>
+          <NewsItemPopup
+            article={activeArticle}
+            closePopup={() => setActiveArticle(null)}
+          />
+        </>
+      )}
     </>
   );
 };

@@ -4,7 +4,7 @@ import { FC, useState } from 'react';
 import styled from 'styled-components';
 
 import { ImageFallback } from '../ImageFallback/ImageFallback';
-import SpinningLoader from '../ImageLoader/SpinningLoader';
+import { SpinningLoader } from '../ImageLoader/SpinningLoader';
 import { LoaderWrapper, Wrapper } from './CustomImage.styles';
 import { IProps } from './CustomImage.types';
 
@@ -28,6 +28,7 @@ export const CustomImage: FC<IProps> = ({ src, fallbackSrc, ...props }) => {
     setImageSrc(fallbackSrc);
     setIsLoading(false);
     setIsErrored(true);
+    console.log('test');
   };
 
   return (

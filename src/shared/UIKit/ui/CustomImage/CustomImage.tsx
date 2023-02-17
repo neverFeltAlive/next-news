@@ -28,7 +28,6 @@ export const CustomImage: FC<IProps> = ({ src, fallbackSrc, ...props }) => {
     setImageSrc(fallbackSrc);
     setIsLoading(false);
     setIsErrored(true);
-    console.log('test');
   };
 
   return (

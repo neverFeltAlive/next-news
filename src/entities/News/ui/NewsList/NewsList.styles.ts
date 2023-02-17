@@ -13,6 +13,7 @@ export const ArticleSwiper = styled(Swiper)`
 export const SpinnerWrapper = styled.div`
   position: relative;
   height: 100%;
+  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;

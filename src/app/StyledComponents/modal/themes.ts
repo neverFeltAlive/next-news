@@ -1,9 +1,15 @@
 import { ITheme } from '../index.types';
 
 //region Themes
-const theme = {
+const theme: ITheme = {
   borderRadius: '20px',
   fontSize: 20,
+  breakPoints: {
+    mobile: '320px',
+    tablet: '768px',
+    laptop: '1024px',
+    desktop: '2560px',
+  },
 };
 
 const light = {

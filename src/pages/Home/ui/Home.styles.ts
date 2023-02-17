@@ -13,6 +13,11 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   width: 80%;
   margin: 100px auto auto;
+
+  @media (max-width: ${(props) => props.theme.breakPoints.laptop}) {
+    width: 100%;
+    margin: 0;
+  }
 `;
 
 export const ToggleContainer = styled.div`

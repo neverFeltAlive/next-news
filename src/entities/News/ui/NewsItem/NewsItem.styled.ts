@@ -45,7 +45,7 @@ export const ArticleImage = styled.div`
   position: relative;
   width: 100%;
   height: fit-content;
-  max-height: 400px;
+  max-height: 300px;
   min-height: 152px;
   overflow: hidden;
   display: flex;
@@ -58,6 +58,10 @@ export const ArticleDescription = styled.h5`
   padding: 0;
   font-size: 14px;
   color: ${(props) => rgba(props.theme.mainColor, 0.7)};
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 `;
 
 export const ArticleLink = styled.a`
@@ -82,4 +86,8 @@ export const ArticleAuthor = styled.p`
   font-size: 14px;
   margin: 0;
   padding: 10px 0 0;
+  max-width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;

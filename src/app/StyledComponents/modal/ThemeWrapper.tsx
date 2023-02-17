@@ -1,10 +1,10 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 
 import { ThemeProvider } from 'styled-components';
 
-import { GlobalStyle } from '../ui/GlobalStyle';
-import { useCookies } from 'react-cookie';
+import { useThemeCookie } from '@/shared/Theme';
 
+import { GlobalStyle } from '../ui/GlobalStyle';
 import { IProps } from './ThemeWrapper.types';
 import { darkTheme, lightTheme } from './themes';
 
@@ -13,30 +13,11 @@ export const CustomThemeContext = React.createContext({
   setIsDark: (isDark: boolean) => {},
 });
 
-const CookieMap = {
-  dark: 'dark',
-  light: 'light',
-};
-
 export const ThemeWrapper: FC<IProps> = ({ children }) => {
-  const [cookie, setCookie] = useCookies(['theme']);
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    cookie.theme === CookieMap.dark && setIsDark(true);
-  }, []);
-
-  const setIsDarkWrapper = (isDark: boolean) => {
-    setIsDark(isDark);
-    isDark
-      ? setCookie('theme', CookieMap.dark)
-      : setCookie('theme', CookieMap.light);
-  };
+  const [isDark, setIsDark] = useThemeCookie();
 
   return (
-    <CustomThemeContext.Provider
-      value={{ isDark, setIsDark: setIsDarkWrapper }}
-    >
+    <CustomThemeContext.Provider value={{ isDark, setIsDark }}>
       <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
         <GlobalStyle />
         {children}

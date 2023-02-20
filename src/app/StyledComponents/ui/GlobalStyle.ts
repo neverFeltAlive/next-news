@@ -78,6 +78,10 @@ export const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
       props.theme.shadowColor} 0%, ${(props) =>
   props.theme.shadowColor} 50%, ${(props) => props.theme.lightColor} 90%);
   }
+  
+  *{
+    box-sizing: border-box;
+  }
 
   main {
     display: block;

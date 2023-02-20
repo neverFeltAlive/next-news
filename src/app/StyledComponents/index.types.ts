@@ -8,8 +8,10 @@ export interface ITheme {
   secondAccentColor?: string;
   breakPoints: {
     mobile: string;
+    mobileLarge: string;
     tablet: string;
     laptop: string;
+    laptopLarge: string;
     desktop: string;
   };
 }

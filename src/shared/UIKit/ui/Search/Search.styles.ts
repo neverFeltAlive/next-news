@@ -11,6 +11,10 @@ export const Form = styled.form`
   border-radius: ${(props) => props.theme.borderRadius};
   background-color: ${(props) => props.theme.lightColor};
   color: ${(props) => props.theme.mainColor};
+
+  @media (max-width: ${(props) => props.theme.breakPoints.mobile}) {
+    width: 100%;
+  }
 `;
 
 export const Button = styled.button<{ isActive: boolean }>`

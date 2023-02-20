@@ -8,6 +8,10 @@ export const ArticleSection = styled.section`
 
 export const ArticleSwiper = styled(Swiper)`
   padding: 40px;
+
+  @media (max-width: ${(props) => props.theme.breakPoints.laptopLarge}) {
+    padding: 40px 0 15px;
+  }
 `;
 
 export const SpinnerWrapper = styled.div`
@@ -34,7 +38,7 @@ export const ListFooter = styled.div`
 export const ListTotalCount = styled.div`
   color: ${(props) => props.theme.mainColor};
   margin: 0;
-  padding: 0;
+  padding: 0 10px 0 0;
   font-size: 16px;
   font-weight: 600;
 `;

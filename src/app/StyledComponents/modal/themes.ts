@@ -6,8 +6,10 @@ const theme: ITheme = {
   fontSize: 20,
   breakPoints: {
     mobile: '320px',
+    mobileLarge: '576px',
     tablet: '768px',
     laptop: '1024px',
+    laptopLarge: '1248px',
     desktop: '2560px',
   },
 };

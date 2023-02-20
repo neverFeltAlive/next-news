@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 
+import { useTheme } from 'styled-components';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -7,6 +8,7 @@ import 'swiper/css/scrollbar';
 import { SwiperSlide } from 'swiper/react';
 import { Swiper } from 'swiper/types';
 
+import { MediaQueryTypes, useMediaQuery } from '@/shared/MediaQuery';
 import { INewsAPIArticle, NewsAPIEndpoints } from '@/shared/NewsAPI';
 import { UISpinner } from '@/shared/UIKit';
 
@@ -23,6 +25,7 @@ import {
   TotalCountNumber,
 } from './NewsList.styles';
 import { IProps } from './NewsList.types';
+import { ISCTheme } from '@/app/StyledComponents';
 
 export const NewsList = <T extends NewsAPIEndpoints>({
   articles,
@@ -33,13 +36,19 @@ export const NewsList = <T extends NewsAPIEndpoints>({
   fetchPreviousPage,
   isLoading,
 }: IProps): ReactElement => {
+  const theme = useTheme() as ISCTheme;
+  const isSmall = useMediaQuery(theme.breakPoints.laptop, MediaQueryTypes.max);
+  const isMedium = useMediaQuery(
+    theme.breakPoints.laptopLarge,
+    MediaQueryTypes.max
+  );
+
   const [swiper, setSwiper] = useState<Swiper | null>(null);
   const [swiperActiveIndex, setSwiperActiveIndex] = useState(1);
   const [activeArticle, setActiveArticle] = useState<INewsAPIArticle | null>(
     null
   );
   const offset = PAGE_SIZE / 4;
-
   const articlesToDraw = articles;
 
   useEffect(() => {
@@ -51,6 +60,7 @@ export const NewsList = <T extends NewsAPIEndpoints>({
 
   const handleArticleClick = (index: number) => {
     if (swiperActiveIndex !== index && !!swiper) {
+      console.log(swiperActiveIndex);
       setSwiperActiveIndex(index);
       swiper?.slideTo(index - 1);
     } else if (swiperActiveIndex === index && articles) {
@@ -62,11 +72,13 @@ export const NewsList = <T extends NewsAPIEndpoints>({
     <>
       <ArticleSection>
         <ArticleSwiper
-          spaceBetween={50}
-          slidesPerView={3}
+          spaceBetween={isMedium ? 20 : 50}
+          slidesPerView={isSmall ? 1 : 3}
           onSwiper={(swiper) => setSwiper(swiper)}
           onSlideChange={(swiper) =>
-            setSwiperActiveIndex(swiper.activeIndex + 1)
+            setSwiperActiveIndex(
+              isSmall ? swiper.activeIndex : swiper.activeIndex + 1
+            )
           }
         >
           {isLoading ? (

@@ -20,6 +20,26 @@ export const Article = styled.article<{ isFull: boolean }>`
   &:hover {
     box-shadow: 0 0 15px ${(props) => props.theme.mainColor};
   }
+
+  @media (max-width: ${(props) => props.theme.breakPoints.laptop}) {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+  @media (max-width: ${(props) => props.theme.breakPoints.mobileLarge}) {
+    height: 400px;
+
+    ${(props) =>
+      props.isFull &&
+      `
+      max-width: 100%;
+      height: fit-content;
+      width: 100%;
+      margin: 0;
+    `}
+  }
+  @media (max-width: ${(props) => props.theme.breakPoints.mobile}) {
+    height: ${(props) => (props.isFull ? '100%' : '350px')};
+  }
 `;
 
 export const ArticleTitle = styled.h3<{ isFull: boolean }>`

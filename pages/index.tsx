@@ -2,7 +2,6 @@ import Head from 'next/head';
 
 import { HomePage } from '@/pages/Home';
 
-// TODO: pwa
 // TODO: new news notifications
 
 // TODO: ssr
@@ -11,7 +10,6 @@ import { HomePage } from '@/pages/Home';
 // TODO: date input
 // TODO: select search
 // TODO: generic search
-// TODO: mobile version
 // TODO: category select
 // TODO: declaration files TS
 

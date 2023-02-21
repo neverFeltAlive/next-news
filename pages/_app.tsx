@@ -1,8 +1,11 @@
 import type { AppProps } from 'next/app';
+
+import { appWithTranslation } from 'next-i18next';
+
 import { ReactQueryInitializer } from '@/app/ReactQuery';
 import { ThemeWrapper } from '@/app/StyledComponents';
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <ReactQueryInitializer>
       <ThemeWrapper>
@@ -11,3 +14,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </ReactQueryInitializer>
   );
 }
+
+export default appWithTranslation(App);

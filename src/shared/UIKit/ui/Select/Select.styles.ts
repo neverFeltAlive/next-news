@@ -27,6 +27,13 @@ export const SelectHead = styled.div<{ isSelected: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-transform: capitalize;
+`;
+
+export const Selected = styled.span`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const SelectOptions = styled.div<{ isOpen: boolean }>`

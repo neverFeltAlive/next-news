@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'next-i18next';
 
 import { UICustomImage, UIDate } from '@/shared/UIKit';
 import { getMonthFromDate, numberToDateFormat } from '@/shared/UIKit';
@@ -29,49 +29,56 @@ export const NewsItem: FC<IProps> = ({
   isFull = false,
 }) => {
   const publishedDate = !!publishedAt && new Date(Date.parse(publishedAt));
+  const { t: translation } = useTranslation('common');
+
+  const capitalize = (str: string) =>
+    str
+      .split(' ')
+      .map((item, index) =>
+        index === 0 ? item[0].toUpperCase() + item.slice(1) : item
+      )
+      .join(' ');
 
   return (
-    <AnimatePresence>
-      <Article isFull={isFull}>
-        <>
-          {!!title && <ArticleTitle isFull={isFull}>{title}</ArticleTitle>}
-          <ArticleBody>
-            {!!urlToImage && (
-              <ArticleImage>
-                <UICustomImage
-                  fallbackSrc={noImage}
-                  src={urlToImage}
-                  alt="Image from the article"
-                  width={550}
-                  height={300}
-                />
-              </ArticleImage>
-            )}
-          </ArticleBody>
-          <div>
-            {!!description && isFull && (
-              <ArticleDescription>{description}</ArticleDescription>
-            )}
-
-            {!!url && isFull && (
-              <ArticleLink href={url}>Go to source</ArticleLink>
-            )}
-            <ArticleFooter>
-              <ArticleAuthor
-                dangerouslySetInnerHTML={{ __html: author || '' }}
+    <Article isFull={isFull}>
+      <>
+        {!!title && <ArticleTitle isFull={isFull}>{title}</ArticleTitle>}
+        <ArticleBody>
+          {!!urlToImage && (
+            <ArticleImage>
+              <UICustomImage
+                fallbackSrc={noImage}
+                src={urlToImage}
+                alt="Image from the article"
+                width={550}
+                height={300}
               />
-              {!!publishedDate && (
-                <UIDate
-                  year={publishedDate.getFullYear()}
-                  month={getMonthFromDate(publishedDate)}
-                  day={numberToDateFormat(publishedDate.getDay())}
-                />
-              )}
-            </ArticleFooter>
-          </div>
-        </>
-      </Article>
-    </AnimatePresence>
+            </ArticleImage>
+          )}
+        </ArticleBody>
+        <div>
+          {!!description && isFull && (
+            <ArticleDescription>{description}</ArticleDescription>
+          )}
+
+          {!!url && isFull && (
+            <ArticleLink href={url}>
+              {capitalize(translation('toSource') as string)}
+            </ArticleLink>
+          )}
+          <ArticleFooter>
+            <ArticleAuthor dangerouslySetInnerHTML={{ __html: author || '' }} />
+            {!!publishedDate && (
+              <UIDate
+                year={publishedDate.getFullYear()}
+                month={getMonthFromDate(publishedDate)}
+                day={numberToDateFormat(publishedDate.getDay())}
+              />
+            )}
+          </ArticleFooter>
+        </div>
+      </>
+    </Article>
   );
 };
 

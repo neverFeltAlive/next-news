@@ -1,17 +1,27 @@
 import React from 'react';
 
+import { LanguageButton } from '@/shared/Translation';
+
 import { QueryParamsProvider } from '@/entities/QueryParams';
 
 import { ThemeToggle } from '@/features/ThemeToggle';
 
 import { News } from '@/widgets/News';
 
-import { Container, ToggleContainer, Wrapper } from './Home.styles';
+import {
+  Container,
+  LanguageContainer,
+  ToggleContainer,
+  Wrapper,
+} from './Home.styles';
 
 export const Home = () => {
   return (
     <QueryParamsProvider>
       <Container>
+        <LanguageContainer>
+          <LanguageButton />
+        </LanguageContainer>
         <ToggleContainer>
           <ThemeToggle />
         </ToggleContainer>

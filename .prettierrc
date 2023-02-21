@@ -4,9 +4,11 @@
   "semi": true,
   "singleQuote": true,
   "importOrder": [
-    "^react$|^next",
+    "^react$|^next$|^next/",
+    "i18next",
     "react-query|styled-components|swiper|polished",
     "<THIRD_PARTY_MODULES>",
+    "@/app",
     "@/shared",
     "@/entities",
     "@/features",

@@ -1,5 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 
+import { useTranslation } from 'next-i18next';
+
 import { useTheme } from 'styled-components';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -7,6 +9,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { SwiperSlide } from 'swiper/react';
 import { Swiper } from 'swiper/types';
+
+import { ISCTheme } from '@/app/StyledComponents';
 
 import { MediaQueryTypes, useMediaQuery } from '@/shared/MediaQuery';
 import { INewsAPIArticle, NewsAPIEndpoints } from '@/shared/NewsAPI';
@@ -25,17 +29,15 @@ import {
   TotalCountNumber,
 } from './NewsList.styles';
 import { IProps } from './NewsList.types';
-import { ISCTheme } from '@/app/StyledComponents';
 
 export const NewsList = <T extends NewsAPIEndpoints>({
   articles,
   totalResults,
   hasNextPage,
-  hasPreviousPage,
   fetchNextPage,
-  fetchPreviousPage,
   isLoading,
 }: IProps): ReactElement => {
+  const { t: translation } = useTranslation('common');
   const theme = useTheme() as ISCTheme;
   const isSmall = useMediaQuery(theme.breakPoints.laptop, MediaQueryTypes.max);
   const isMedium = useMediaQuery(
@@ -60,7 +62,6 @@ export const NewsList = <T extends NewsAPIEndpoints>({
 
   const handleArticleClick = (index: number) => {
     if (swiperActiveIndex !== index && !!swiper) {
-      console.log(swiperActiveIndex);
       setSwiperActiveIndex(index);
       swiper?.slideTo(index - 1);
     } else if (swiperActiveIndex === index && articles) {
@@ -106,7 +107,7 @@ export const NewsList = <T extends NewsAPIEndpoints>({
         <>
           <ListFooter>
             <ListTotalCount>
-              Articles Found:{' '}
+              {translation('articlesFound')}:{' '}
               <TotalCountNumber>{totalResults}</TotalCountNumber>
             </ListTotalCount>
           </ListFooter>

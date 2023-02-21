@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import { useCookies } from 'react-cookie';
-
 import { NewsAPIEndpoints } from '@/shared/NewsAPI';
 
 import { useLocation } from '@/entities/Location';

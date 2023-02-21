@@ -1,6 +1,12 @@
 import { useState } from 'react';
 
-import { Icon, SelectHead, SelectOptions, StyledSelect } from './Select.styles';
+import {
+  Icon,
+  Selected,
+  SelectHead,
+  SelectOptions,
+  StyledSelect,
+} from './Select.styles';
 import { IProps } from './Select.types';
 
 import { FaAngleDown } from 'react-icons/fa';
@@ -24,7 +30,7 @@ export const Select = <T extends string | number>({
   return (
     <StyledSelect isOpen={isOpen}>
       <SelectHead isSelected={!!selected}>
-        {!!selected ? selected : defaultValue}
+        <Selected>{!!selected ? selected : defaultValue}</Selected>
         <Icon isOpen={isOpen} onClick={handleOpenClick}>
           <FaAngleDown />
         </Icon>

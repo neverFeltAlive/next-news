@@ -41,6 +41,7 @@ export const ListTotalCount = styled.div`
   padding: 0 10px 0 0;
   font-size: 16px;
   font-weight: 600;
+  text-transform: capitalize;
 `;
 
 export const TotalCountNumber = styled.span`

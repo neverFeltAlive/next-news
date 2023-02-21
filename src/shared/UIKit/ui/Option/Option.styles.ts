@@ -12,7 +12,8 @@ export const StyledOption = styled.div<{ isSelected: boolean }>`
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   pointer-events: ${(props) => (props.isSelected ? 'none' : 'all')};
-  height: 40px;
+  min-height: 40px;
+  text-transform: capitalize;
 
   &:hover {
     color: ${(props) => props.theme.accentColor};

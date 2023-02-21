@@ -74,7 +74,7 @@ export enum Countries {
   Russia = 'ru',
   UnitedStates = 'us',
   Australia = 'au',
-  Taiwan = 'ru',
+  Taiwan = 'tw',
   Ukraine = 'ua',
   Venezuela = 've',
   SouthAfrica = 'sa',

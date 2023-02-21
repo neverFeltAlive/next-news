@@ -1,3 +1,5 @@
+import { useTranslation } from 'next-i18next';
+
 import { NewsAPICountries, NewsAPISortOptions } from '@/shared/NewsAPI';
 import { setOptionValueType, UIOption, UISelect } from '@/shared/UIKit';
 
@@ -9,6 +11,7 @@ export const NewsSelect = <T extends 'country' | 'sortBy'>({
   options,
 }: IProps<T>) => {
   const [params, setParams] = useQueryParams();
+  const { t: translation } = useTranslation('common');
 
   const paramName = Object.values(options).includes(NewsAPICountries.Australia)
     ? 'country'
@@ -16,24 +19,31 @@ export const NewsSelect = <T extends 'country' | 'sortBy'>({
     ? 'sortBy'
     : '';
 
+  const getTranslation = (str: string) =>
+    paramName === 'country'
+      ? translation(`countries.${str}`)
+      : translation(`sort.${str}`);
+
   const setParamValue = (value: string) => {
     !!paramName && setParams({ [paramName]: value });
   };
 
-  const getValue = () =>
+  const getParam = () =>
     !!paramName ? params[paramName as keyof typeof params] : '';
 
-  const getDefaultValue = () =>
-    getValue() || paramName === 'country' ? 'Country' : 'Sort';
+  const getSelected = () => {
+    const selected = options[
+      Object.keys(options).find(
+        (key) => options[key as keyof OptionsType<T>] === getParam()
+      ) as keyof OptionsType<T>
+    ] as string;
+    return selected ? getTranslation(selected) : undefined;
+  };
 
   return (
     <UISelect
-      defaultValue={getDefaultValue()}
-      selected={
-        Object.keys(options).find(
-          (key) => options[key as keyof OptionsType<T>] === getValue()
-        ) || ''
-      }
+      defaultValue={getTranslation('name')}
+      selected={getSelected() || ''}
       setValue={setParamValue}
     >
       {(Object.keys(options) as Array<keyof typeof options>).map(
@@ -43,11 +53,11 @@ export const NewsSelect = <T extends 'country' | 'sortBy'>({
               <UIOption
                 key={key.toString()}
                 value={options[key] as string}
-                isSelected={(options[key] as string) === getValue()}
+                isSelected={(options[key] as string) === getParam()}
                 setValue={setValue}
                 onClick={onClick}
               >
-                {key.toString()}
+                {getTranslation(options[key] as string)}
               </UIOption>
             );
           }

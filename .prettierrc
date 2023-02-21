@@ -15,7 +15,8 @@
     "@/widgets",
     "^./|^../",
     "@/public|public",
-    "@next/font|react-icons"
+    "@next/font|react-icons",
+    "@testing-library|jest"
   ],
   "importOrderSeparation": true
 }

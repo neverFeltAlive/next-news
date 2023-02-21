@@ -15,6 +15,7 @@ export const Option = <T,>({
         !!onClick && onClick();
         setValue(value);
       }}
+      data-testid="option"
     >
       {children}
     </StyledOption>

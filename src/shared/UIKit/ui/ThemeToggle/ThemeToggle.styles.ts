@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledToggle = styled.div<{ isActive: boolean }>`
+  cursor: pointer;
   position: relative;
   width: 60px;
   height: 30px;
